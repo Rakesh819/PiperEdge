@@ -1,0 +1,108 @@
+<h1 class="head">Discount Table</h1><br><br>
+<div class="container">
+<table class="table table-striped-columns">
+  <thead>
+    <tr>
+      <th scope="col">Vendor</th>
+      <th scope="col">Trade A</th>
+      <th scope="col">Trade B</th>
+      <th scope="col">Trade C</th>
+      <th scope="col">Trade D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Vendor 1</td>
+      <td>12</td>
+      <td>12</td>
+      <td>N/A</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td scope="row">Vendor 2</td>
+      <td>10</td>
+      <td>8</td>
+      <td>20</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td scope="row">Vendor 3</td>      
+      <td>N/A</td>
+      <td>25</td>
+      <td>3</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td scope="row">Vendor 4</td>
+      <td>9</td>
+      <td>N/A</td>
+      <td>16</td>
+      <td>30</td>
+    </tr>    
+    <tr>
+      <td scope="row">Vendor 5</td>
+      <td>5</td>
+      <td>11</td>
+      <td>N/A</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><br>
+
+<h1 class="head">Product Table</h1><br><br>
+<div class="container">
+  <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">Sl No.</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Tags</th>
+        <th scope="col">Vendor</th>
+        <th scope="col">Cart</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of products">
+      <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.tags}}</td>
+        <td>{{product.vendor}}</td>
+        <td><button class="btn" (click)="addToCart(product)">Add to Cart</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div><br><br>
+
+
+<h1 class="head">Shopping Cart</h1><br><br>
+<div class="container">
+  <table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">Sl No.</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Org Price</th>
+        <th scope="col">Discount Price</th>
+        <th scope="col">Discounted Price</th>
+        <th scope="col">Vendor</th>
+        <th scope="col">Remove Cart</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let items of cart">
+      <tr>
+        <td>{{items.id}}</td>
+        <td>{{items.name}}</td>
+        <td>{{items.price}}</td>
+        <td>{{items.discount}}</td>
+        <td>{{items.price - items.discount}}</td>
+        <td>{{items.vendor}}</td>
+        <td><button class="btnDanger" (click)="removeFromCart(items)">Remove from Cart</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h1 class="head">Total Price: Rs. {{total}}</h1>
